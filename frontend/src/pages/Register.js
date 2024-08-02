@@ -1,21 +1,20 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import Register from './Register';
-import { Routes, Route, Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-const LoginContainer = styled.div`
+const RegisterContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 400px;
-  height: 500px;
+  height: 600px;
   background-color: #f5f5f5;
   margin: 0 auto;
   margin-top: 80px;
 `;
 
-const LoginBox = styled.div`
+const RegisterBox = styled.div`
   width: 100%;
   padding: 40px;
   background-color: white;
@@ -23,7 +22,7 @@ const LoginBox = styled.div`
   border-radius: 8px;
 `;
 
-const LoginTitle = styled.h1`
+const RegisterTitle = styled.h1`
   font-size: 2.4rem;
   font-weight: bold;
   margin-bottom: 2rem;
@@ -65,40 +64,70 @@ const SubmitButton = styled.button`
   }
 `;
 
-const RegisterLink = styled.a`
+const LoginLink = styled(Link)`
   display: block;
   font-size: 1.2rem;
   text-align: center;
   margin-top: 1.5rem;
   color: #007bff;
   text-decoration: none;
-  cursor: pointer;
   &:hover {
     text-decoration: underline;
   }
 `;
 
-function LoginPage() {
+export default function RegisterPage() {
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Add your login logic here
+    // Add your registration logic here
+    console.log('First Name:', firstName);
+    console.log('Last Name:', lastName);
+    console.log('Phone Number:', phoneNumber);
     console.log('Email:', email);
     console.log('Password:', password);
   };
 
-  const handleRegisterClick = () => {
-    navigate('/register');
-  };
-
   return (
-    <LoginContainer>
-      <LoginBox>
-        <LoginTitle>Login</LoginTitle>
+    <RegisterContainer>
+      <RegisterBox>
+        <RegisterTitle>Register</RegisterTitle>
         <form onSubmit={handleSubmit}>
+          <FormGroup>
+            <Label htmlFor="firstName">First Name</Label>
+            <Input
+              type="text"
+              id="firstName"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+              required
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label htmlFor="lastName">Last Name</Label>
+            <Input
+              type="text"
+              id="lastName"
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+              required
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label htmlFor="phoneNumber">Phone Number</Label>
+            <Input
+              type="tel"
+              id="phoneNumber"
+              value={phoneNumber}
+              onChange={(e) => setPhoneNumber(e.target.value)}
+              required
+            />
+          </FormGroup>
           <FormGroup>
             <Label htmlFor="email">Email</Label>
             <Input
@@ -119,23 +148,10 @@ function LoginPage() {
               required
             />
           </FormGroup>
-          <SubmitButton type="submit">Login</SubmitButton>
+          <SubmitButton type="submit">Register</SubmitButton>
         </form>
-        <RegisterLink onClick={handleRegisterClick}>Register here</RegisterLink>
-      </LoginBox>
-    </LoginContainer>
+        <LoginLink to="/login">Already have an account? Login</LoginLink>
+      </RegisterBox>
+    </RegisterContainer>
   );
 }
-
-function App() {
-  return (
-    <div>
-      <Routes>
-        <Route path="/" element={<LoginPage />} />
-        <Route path="/register" element={<Register />} />
-      </Routes>
-    </div>
-  );
-}
-
-export default App;

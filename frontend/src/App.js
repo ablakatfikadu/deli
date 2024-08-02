@@ -14,7 +14,7 @@ function App() {
       <nav className="navbar navbar-expand-lg navbar-light bg-white">
         <div className="container">
           <Link className="navbar-brand" to="/"> <img src={logo} style={{
-            height: '150px',
+            height: '100px',
             width: 'auto',
              marginRight: '-50px'
           }} alt="Logo" /></Link>
@@ -26,9 +26,9 @@ function App() {
               <li className="nav-item">
                 <Link className="nav-link active" aria-current="page" to="/">Home</Link>
               </li>
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <Link className="nav-link active" to="/create-post">Create Post</Link>
-              </li>
+              </li> */}
               <li className="nav-item">
                 <Link className="nav-link active" to="/about">About</Link>
               </li>
@@ -126,10 +126,11 @@ function App() {
           color: #333;
         }
 
-        .navbar {
-          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-          padding: 1rem 0;
-        }
+       .navbar {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 1rem 0;
+  height: 100px; /* Set the desired height */
+}
 
         .content-wrapper {
   flex-grow: 1;
