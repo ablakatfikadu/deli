@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import Api from "../components/Api";
 
 const RegisterContainer = styled.div`
   display: flex;
@@ -35,7 +36,6 @@ const Label = styled.label`
 
 const Input = styled.input`
   width: 450px;
-
   padding: 0.8rem 1rem;
   font-size: 1.2rem;
   border: 1px solid #ccc;
@@ -81,20 +81,41 @@ const LoginLink = styled(Link)`
 `;
 
 export default function RegisterPage() {
+  // Use the Api component to create an instance of the HTTP client
+  const http = Api();
+
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  // Function to handle the form submission
   const handleSubmit = (e) => {
-    e.preventDefault();
-    // Add your registration logic here
-    console.log('First Name:', firstName);
-    console.log('Last Name:', lastName);
-    console.log('Phone Number:', phoneNumber);
-    console.log('Email:', email);
-    console.log('Password:', password);
+    e.preventDefault(); // Prevent the default form submission behavior
+
+    // Send a POST request to the '/createpost' endpoint with the title and description
+    http
+      .post("/register", { firstName, lastName, phoneNumber, email, password })
+      .then((res) => {
+        console.log("Request payload:", { firstName, lastName, phoneNumber, email, password });
+        console.log("Response:", res.data);
+      })
+      .catch((error) => {
+        console.error("Error creating post:", error);
+        console.error("Request payload:", { firstName, lastName, phoneNumber, email, password });
+
+        // Log more detailed error information if available
+        if (error.response) {
+          console.error("Response data:", error.response.data);
+          console.error("Response status:", error.response.status);
+          console.error("Response headers:", error.response.headers);
+        } else if (error.request) {
+          console.error("No response received:", error.request);
+        } else {
+          console.error("Error:", error.message);
+        }
+      });
   };
 
   return (
