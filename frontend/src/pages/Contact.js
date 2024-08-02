@@ -4,12 +4,19 @@ import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
 
 const ContactContainer = styled.div`
   display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1800px;
+  height: 700px;
+  background-color: #f5f5f5;
+`;
+
+const ContactWrapper = styled.div`
+  display: flex;
   width: 80%;
-  margin: 4rem auto;
   background-color: #f5f5f5;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  height: 800px;
 `;
 
 const ContactInfoContainer = styled.div`
@@ -90,38 +97,40 @@ const ContactForm = styled.form`
 export default function Contact() {
   return (
     <ContactContainer>
-      <ContactInfoContainer>
-        <ContactHeader>Contact Us</ContactHeader>
-        <ContactInfo>
-          <ContactItem>
-            <FaPhoneAlt />
-            <a href="tel:+251123456789">+251 911-224-397</a>
-          </ContactItem>
-          <ContactItem>
-            <FaEnvelope />
-            <a href="mailto:info@diligencetechnologies.com">
-              info@diligencetechnologies.com
-            </a>
-          </ContactItem>
-          <ContactItem>
-            <FaMapMarkerAlt />
-            <span>
-              Addis Ababa, Ethiopia
-              <br />
-              Bole Subcity, Woreda 03, House No. 1234
-            </span>
-          </ContactItem>
-        </ContactInfo>
-      </ContactInfoContainer>
+      <ContactWrapper>
+        <ContactInfoContainer>
+          <ContactHeader>Contact Us</ContactHeader>
+          <ContactInfo>
+            <ContactItem>
+              <FaPhoneAlt />
+              <a href="tel:+251123456789">+251 911-224-397</a>
+            </ContactItem>
+            <ContactItem>
+              <FaEnvelope />
+              <a href="mailto:info@diligencetechnologies.com">
+                info@diligencetechnologies.com
+              </a>
+            </ContactItem>
+            <ContactItem>
+              <FaMapMarkerAlt />
+              <span>
+                Addis Ababa, Ethiopia
+                <br />
+                Bole Subcity, Woreda 03, House No. 1234
+              </span>
+            </ContactItem>
+          </ContactInfo>
+        </ContactInfoContainer>
 
-      <ContactFormContainer>
-        <ContactForm>
-          <input type="text" placeholder="Name" />
-          <input type="email" placeholder="Email" />
-          <textarea placeholder="Message"></textarea>
-          <button type="submit">Send</button>
-        </ContactForm>
-      </ContactFormContainer>
+        <ContactFormContainer>
+          <ContactForm>
+            <input type="text" placeholder="Name" />
+            <input type="email" placeholder="Email" />
+            <textarea placeholder="Message"></textarea>
+            <button type="submit">Send</button>
+          </ContactForm>
+        </ContactFormContainer>
+      </ContactWrapper>
     </ContactContainer>
   );
 }

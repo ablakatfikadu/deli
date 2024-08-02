@@ -7,6 +7,7 @@ import Contact from './pages/Contact';
 import LoginPage from './pages/LoginPage';
 import logo from './assets/logo1.webp';
 import back from './assets/back.jpg'; // Import the background image
+import Register from './pages/Register';
 
 function App() {
   return (
@@ -51,6 +52,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<Register />} />
           </Routes>
         </div>
       </div>

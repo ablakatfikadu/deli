@@ -7,30 +7,23 @@ const RegisterContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 400px;
-  height: 600px;
+  width: 600px;
   background-color: #f5f5f5;
-  margin: 0 auto;
-  margin-top: 80px;
-`;
-
-const RegisterBox = styled.div`
-  width: 100%;
+  margin: 80px auto;
   padding: 40px;
-  background-color: white;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 `;
 
 const RegisterTitle = styled.h1`
-  font-size: 2.4rem;
+  font-size: 1.8rem;
   font-weight: bold;
   margin-bottom: 2rem;
   text-align: center;
 `;
 
 const FormGroup = styled.div`
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.2rem;
 `;
 
 const Label = styled.label`
@@ -41,11 +34,18 @@ const Label = styled.label`
 `;
 
 const Input = styled.input`
-  width: 100%;
+  width: 450px;
+
   padding: 0.8rem 1rem;
   font-size: 1.2rem;
   border: 1px solid #ccc;
   border-radius: 4px;
+  transition: border-color 0.3s ease;
+
+  &:focus {
+    outline: none;
+    border-color: #007bff;
+  }
 `;
 
 const SubmitButton = styled.button`
@@ -59,6 +59,8 @@ const SubmitButton = styled.button`
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
+
   &:hover {
     background-color: #0056b3;
   }
@@ -71,8 +73,10 @@ const LoginLink = styled(Link)`
   margin-top: 1.5rem;
   color: #007bff;
   text-decoration: none;
+  transition: color 0.3s ease;
+
   &:hover {
-    text-decoration: underline;
+    color: #0056b3;
   }
 `;
 
@@ -95,63 +99,61 @@ export default function RegisterPage() {
 
   return (
     <RegisterContainer>
-      <RegisterBox>
-        <RegisterTitle>Register</RegisterTitle>
-        <form onSubmit={handleSubmit}>
-          <FormGroup>
-            <Label htmlFor="firstName">First Name</Label>
-            <Input
-              type="text"
-              id="firstName"
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
-              required
-            />
-          </FormGroup>
-          <FormGroup>
-            <Label htmlFor="lastName">Last Name</Label>
-            <Input
-              type="text"
-              id="lastName"
-              value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
-              required
-            />
-          </FormGroup>
-          <FormGroup>
-            <Label htmlFor="phoneNumber">Phone Number</Label>
-            <Input
-              type="tel"
-              id="phoneNumber"
-              value={phoneNumber}
-              onChange={(e) => setPhoneNumber(e.target.value)}
-              required
-            />
-          </FormGroup>
-          <FormGroup>
-            <Label htmlFor="email">Email</Label>
-            <Input
-              type="email"
-              id="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-          </FormGroup>
-          <FormGroup>
-            <Label htmlFor="password">Password</Label>
-            <Input
-              type="password"
-              id="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </FormGroup>
-          <SubmitButton type="submit">Register</SubmitButton>
-        </form>
-        <LoginLink to="/login">Already have an account? Login</LoginLink>
-      </RegisterBox>
+      <RegisterTitle>CREATE AN ACCOUNT</RegisterTitle>
+      <form onSubmit={handleSubmit}>
+        <FormGroup>
+          <Label htmlFor="firstName">First Name</Label>
+          <Input
+            type="text"
+            id="firstName"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+            required
+          />
+        </FormGroup>
+        <FormGroup>
+          <Label htmlFor="lastName">Last Name</Label>
+          <Input
+            type="text"
+            id="lastName"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+            required
+          />
+        </FormGroup>
+        <FormGroup>
+          <Label htmlFor="phoneNumber">Phone Number</Label>
+          <Input
+            type="tel"
+            id="phoneNumber"
+            value={phoneNumber}
+            onChange={(e) => setPhoneNumber(e.target.value)}
+            required
+          />
+        </FormGroup>
+        <FormGroup>
+          <Label htmlFor="email">Email</Label>
+          <Input
+            type="email"
+            id="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </FormGroup>
+        <FormGroup>
+          <Label htmlFor="password">Password</Label>
+          <Input
+            type="password"
+            id="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+        </FormGroup>
+        <SubmitButton type="submit">Register</SubmitButton>
+      </form>
+      <LoginLink to="/login">Already have an account? Login</LoginLink>
     </RegisterContainer>
   );
 }

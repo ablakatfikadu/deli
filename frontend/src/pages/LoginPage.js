@@ -65,20 +65,21 @@ const SubmitButton = styled.button`
   }
 `;
 
-const RegisterLink = styled.a`
+const RegisterLink = styled(Link)`
   display: block;
   font-size: 1.2rem;
   text-align: center;
   margin-top: 1.5rem;
-  color: #007bff;
+  color: blue; // Blue color
   text-decoration: none;
-  cursor: pointer;
+  transition: color 0.3s ease;
+
   &:hover {
-    text-decoration: underline;
+    color: #0056b3;
   }
 `;
 
-function LoginPage() {
+export default function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
@@ -121,21 +122,10 @@ function LoginPage() {
           </FormGroup>
           <SubmitButton type="submit">Login</SubmitButton>
         </form>
-        <RegisterLink onClick={handleRegisterClick}>Register here</RegisterLink>
+        <RegisterLink className="nav-link active" aria-current="page" to="/register">
+          Register here If you don't have an account
+        </RegisterLink>
       </LoginBox>
     </LoginContainer>
   );
 }
-
-function App() {
-  return (
-    <div>
-      <Routes>
-        <Route path="/" element={<LoginPage />} />
-        <Route path="/register" element={<Register />} />
-      </Routes>
-    </div>
-  );
-}
-
-export default App;
